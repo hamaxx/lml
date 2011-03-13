@@ -1,0 +1,21 @@
+<lml class="article" options="12pt">
+	<document>
+		<head>
+			<title value="Test" />
+			<author value="Jure Ham" />
+		</head>
+		<section value="naslov" />
+		Lorem ipsum <br />blablabla
+		<quote>
+			This is quote
+		</quote>
+		<verbatim>
+		This
+		
+		is
+		
+		   verbatim.
+		</verbatim>
+		<pagebreak />
+	</document>
+</lml>

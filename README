@@ -1,0 +1,6 @@
+Very very basic xml to latex parser
+
+Usage:
+  python lml.py example.lml example.tex
+
+lml is licensed under the LGPLv3.

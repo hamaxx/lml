@@ -1,8 +1,8 @@
 import BeautifulSoup, sys, re
 from SpecialTags import SpecialTags
 
-tex = []
-specialTags = SpecialTags(tex)
+texArray = []
+specialTags = SpecialTags(texArray)
 
 def removeWS(s):
 	 return re.sub(r'^\n', '', s)
@@ -10,7 +10,7 @@ def removeWS(s):
 def parseTag(tag):
 	if tag.__class__ == BeautifulSoup.NavigableString:
 		if len(tag) > 0 and not tag.isspace():
-			tex.append(removeWS(tag))
+			texArray.append(removeWS(tag))
 		return False
 		
 	name = tag.name
@@ -19,10 +19,10 @@ def parseTag(tag):
 		return getattr(specialTags, name)(tag)
 	
 	if tag.has_key("value") and not tag.findAll(True):
-		tex.append("\\" + name + "{" + tag["value"] + "}")
+		texArray.append("\\" + name + "{" + tag["value"] + "}")
 		return False
 		
-	tex.append("\\begin{" + name + "}")
+	texArray.append("\\begin{" + name + "}")
 	return "\\end{" + name + "}"
 
 def parseXML(obj):
@@ -33,7 +33,7 @@ def parseXML(obj):
 			parseXML(tag)
 	
 	if endTag:
-		tex.append(endTag)
+		texArray.append(endTag)
 
 if len(sys.argv) > 2:
 	infile = sys.argv[1]
@@ -42,5 +42,5 @@ if len(sys.argv) > 2:
 	xml = BeautifulSoup.BeautifulStoneSoup(open(infile, 'r'))
 	parseXML(xml.find("lml"))
 
-	open(outfile,"w").write("\n".join(tex).encode( "utf-8" ))
+	open(outfile,"w").write("\n".join(texArray).encode( "utf-8" ))
 

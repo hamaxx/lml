@@ -1,17 +1,17 @@
 class SpecialTags:
-	def __init__(self, tex):
-		self.tex = tex
+	def __init__(self, texArray):
+		self.texArray = texArray
 		 
 	def lml(self, tag):
-		self.tex.append("\\documentclass[" + tag["options"] + "]{" + tag["class"] + "}")
+		self.texArray.append("\\documentclass[" + tag["options"] + "]{" + tag["class"] + "}")
 		return False
 
 	def pagebreak(self, tag):
-		self.tex.append("\\pagebreak{}")
+		self.texArray.append("\\pagebreak{}")
 		return False
 		
 	def br(self, tag):
-		self.tex.append("\\\\")
+		self.texArray.append("\\\\")
 		return False
 
 	def head(self, tag):

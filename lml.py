@@ -18,11 +18,24 @@ def parseTag(tag):
 	if hasattr(specialTags, name):
 		return getattr(specialTags, name)(tag)
 	
-	if tag.has_key("value") and not tag.findAll(True):
-		texArray.append("\\" + name + "{" + tag["value"] + "}")
-		return False
+	if len(tag.contents) == 0:
+		value = ""
+		options = ""
 		
-	texArray.append("\\begin{" + name + "}")
+		if tag.has_key("value"):
+			value = "{" + tag["value"] + "}"
+		if tag.has_key("options"):
+			options = "[" + tag["options"] + "]"
+			
+		texArray.append("\\" + name + value + options)
+		return False
+			
+			
+	options = ""
+	if tag.has_key("options"):
+		options = "[" + tag["options"] + "]"
+		
+	texArray.append("\\begin{" + name + "}" + options)
 	return "\\end{" + name + "}"
 
 def parseXML(obj):

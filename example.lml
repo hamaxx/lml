@@ -1,11 +1,12 @@
 <lml class="article" options="12pt">
+	<usepackage value="listings" />
 	<document>
 		<head>
 			<title value="Test" />
 			<author value="Jure Ham" />
 		</head>
 		<section value="naslov" />
-		Lorem ipsum <br />blablabla
+		Lorem ipsum <br />]đšđčž
 		<quote>
 			This is quote
 		</quote>
@@ -18,5 +19,12 @@
 		</verbatim>
 		\subsection{latex test}
 		<pagebreak />
+		<lstlisting options="label=example,caption=Example,tabsize=2">
+str=$1
+while [ -n "$str" ]; do
+	echo $str
+	str=${str:0:$((${#str} - 1))}
+done
+		</lstlisting>
 	</document>
 </lml>

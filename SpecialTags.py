@@ -6,10 +6,6 @@ class SpecialTags:
 		self.texArray.append("\\documentclass[" + tag["options"] + "]{" + tag["class"] + "}")
 		return False
 
-	def pagebreak(self, tag):
-		self.texArray.append("\\pagebreak{}")
-		return False
-		
 	def br(self, tag):
 		self.texArray.append("\\\\")
 		return False

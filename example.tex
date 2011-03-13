@@ -1,4 +1,5 @@
 \documentclass[12pt]{article}
+\usepackage{listings}
 \begin{document}
 \title{Test}
 \author{Jure Ham}
@@ -6,7 +7,7 @@
 \section{naslov}
 		Lorem ipsum 
 \\
-blablabla
+]đšđčž
 		
 \begin{quote}
 			This is quote
@@ -22,5 +23,13 @@ blablabla
 \end{verbatim}
 		\subsection{latex test}
 		
-\pagebreak{}
+\pagebreak
+\begin{lstlisting}[label=example,caption=Example,tabsize=2]
+str=$1
+while [ -n "$str" ]; do
+	echo $str
+	str=${str:0:$((${#str} - 1))}
+done
+		
+\end{lstlisting}
 \end{document}
